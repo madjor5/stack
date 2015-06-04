@@ -1,0 +1,22 @@
+<md-card flex flex-md="50" flex-gt-md="33">
+  <md-card-content>
+    <h1 class="md-title">Login</h1>
+    <form name="loginForm">
+      <md-input-container>
+        <label>Username</label>
+        <input name="username" ng-model="username" required minlength="4">
+        <div ng-messages="loginForm.lastName.$error" ng-show="loginForm.lastName.$dirty">
+          <div ng-message="required">This is required!</div>
+          <div ng-message="minlength">That's too short!</div>
+        </div>
+      </md-input-container>
+      <md-input-container>
+        <label>Password</label>
+        <input type="password" ng-model="password" required>
+      </md-input-container>
+      <div class="md-actions" layout="row" layout-align="end center">
+        <md-button>Login</md-button>
+      </div>
+    </form>
+  </md-card-content>
+</md-card>
