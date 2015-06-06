@@ -11,14 +11,7 @@
     <meta name="viewport" content="initial-scale=1" />
   </head>
   <body ng-app="app" layout="column">
-    <md-toolbar md-scroll-shrink>
-      <div class="md-toolbar-tools">
-        <md-button ng-click="toggleSidenav('left')" hide-gt-sm class="md-icon-button">
-          <md-icon aria-label="Menu" md-svg-icon="https://s3-us-west-2.amazonaws.com/s.cdpn.io/68133/menu.svg"></md-icon>
-        </md-button>
-        <h1>Stack.io</h1>
-      </div>
-    </md-toolbar>
+    <div ng-include="layout/topnav.html"></div>
     <md-content md-scroll-y layout="row" ui-view></md-content>
 
     <!-- build:js js/lib.js -->
