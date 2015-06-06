@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  angular.app('app.layout', [
+  angular.module('app.layout', [
     'app.core'
   ]);
 }());
