@@ -5,7 +5,7 @@
     .config(['$stateProvider', '$urlRouterProvider', config]);
 
   function config($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise('/login');
+    $urlRouterProvider.otherwise('/home');
 
     $stateProvider
       .state('home', {

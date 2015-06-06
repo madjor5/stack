@@ -19,7 +19,7 @@
         <h1>Stack.io</h1>
       </div>
     </md-toolbar>
-    <md-content md-scroll-y layout="row" layout="center center" ui-view></md-content>
+    <md-content md-scroll-y layout="row" ui-view></md-content>
 
     <!-- build:js js/lib.js -->
     <!-- bower:js -->
@@ -35,6 +35,8 @@
     <!-- build:js js/app.js -->
     <!-- inject:js -->
     <script src="/src/client/app/app.module.js"></script>
+    <script src="/src/client/app/core/core.module.js"></script>
+    <script src="/src/client/app/layout/layout.module.js"></script>
     <script src="/src/client/app/app.route.js"></script>
     <!-- endinject -->
 
