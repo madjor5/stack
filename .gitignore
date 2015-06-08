@@ -2,3 +2,6 @@ node_modules
 .tmp
 bower_components
 report/plato
+build/angular-material-icons
+build/fonts
+build

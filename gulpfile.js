@@ -87,13 +87,21 @@ gulp.task('fonts', ['clean-fonts'], function() {
  * Compress images
  * @return {Stream}
  */
-gulp.task('images', ['clean-images'], function() {
+gulp.task('images', ['bower-icons', 'clean-images'], function() {
     log('Compressing and copying images');
 
     return gulp
         .src(config.images)
         .pipe($.imagemin({optimizationLevel: 4}))
         .pipe(gulp.dest(config.build + 'images'));
+});
+
+gulp.task('bower-icons', ['clean-images'], function() {
+  log('Moving icons - TODO');
+
+  return gulp
+        .src(config.icons)
+        .pipe(gulp.dest(config.build + '/angular-material-icons'));
 });
 
 gulp.task('less-watcher', function() {

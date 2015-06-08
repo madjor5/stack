@@ -35,6 +35,7 @@ switch (environment){
         break;
     default:
         console.log('** DEV **');
+        app.use(express.static('./bower-components/material-design-icons/'));
         app.use(express.static('./src/client/'));
         app.use(express.static('./'));
         app.use(express.static('./tmp'));

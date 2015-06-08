@@ -27,10 +27,11 @@ module.exports = function() {
         build: './build/',
         client: client,
         css: temp + 'styles.css',
-        fonts: bower.directory + 'font-awesome/fonts/**/*.*',
+        fonts: bower.directory + 'material-design-icons/iconfont/*.*',
         html: client + '**/*.html',
         htmltemplates: clientApp + '**/*.html',
         images: client + 'images/**/*.*',
+        icons: bower.directory + 'material-design-icons/**/svg/production/*.svg',
         index: client + 'index.html',
         // app js, with no specs
         js: [
