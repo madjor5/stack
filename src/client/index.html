@@ -13,7 +13,13 @@
   </head>
   <body ng-app="app" layout="column">
     <div ng-include="'app/layout/topnav.html'"></div>
-    <md-content md-scroll-y layout="row" ui-view></md-content>
+      <md-sidenav md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" tabindex="-1">
+          johnny
+      </md-sidenav>
+      <md-content ui-view>
+        Main section
+      </md-content>
+    </section>
 
     <!-- build:js js/lib.js -->
     <!-- bower:js -->
