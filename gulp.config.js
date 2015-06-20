@@ -47,6 +47,7 @@ module.exports = function() {
         less: client + 'styles/styles.less',
         report: report,
         root: root,
+        scss: client + 'styles/*.scss',
         server: server,
         source: 'src/',
         stubsjs: [

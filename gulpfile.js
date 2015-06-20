@@ -56,10 +56,25 @@ gulp.task('plato', function(done) {
 });
 
 /**
+ * Compile SCSS to css
+ * @return {Stream}
+ */
+
+gulp.task('styles', ['clean-styles'], function() {
+  log('Compiling SCSS --> CSS');
+
+  return gulp
+      .src(config.scss)
+      .pipe($.sass().on('error', $.sass.logError))
+      .pipe($.autoprefixer({browser: ['last 2 version', '> 5%']}))
+      .pipe(gulp.dest(config.temp));
+});
+
+/**
  * Compile less to css
  * @return {Stream}
  */
-gulp.task('styles', ['clean-styles'], function() {
+gulp.task('styles-less', ['clean-styles'], function() {
     log('Compiling Less --> CSS');
 
     return gulp
@@ -496,10 +511,10 @@ function startBrowserSync(isDev, specRunner) {
     // If build: watches the files, builds, and restarts browser-sync.
     // If dev: watches less, compiles it to css, browser-sync handles reload
     if (isDev) {
-        gulp.watch([config.less], ['styles'])
+        gulp.watch([config.scss], ['styles'])
             .on('change', changeEvent);
     } else {
-        gulp.watch([config.less, config.js, config.html], ['optimize', browserSync.reload])
+        gulp.watch([config.scss, config.js, config.html], ['optimize', browserSync.reload])
             .on('change', changeEvent);
     }
 
