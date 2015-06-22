@@ -1,12 +1,12 @@
-<md-toolbar md-scroll-shrink>
+<md-toolbar md-scroll-shrink ng-controller="TopnavController as vm">
   <div class="md-toolbar-tools">
     <md-button ng-click="toggleSidenav('left')" hide-gt-md class="md-icon-button">
       <md-icon md-font-library="material-icons" class="md-light md-48">menu</md-icon>
     </md-button>
     <h1>Stack.io</h1>
     <span flex></span>
-    <div class="label">Rolan Hunt</div>
-    <md-button class="md-fab md-primary" aria-label="Use Android">
+    <div class="label">{{vm.user.Name}}</div>
+    <md-button class="md-fab md-primary" aria-label="{{vm.user.Name}}" ng-click="vm.showDialog()">
       <img src="https://randomuser.me/api/portraits/med/men/23.jpg" class="face" />
     </md-button>
   </div>

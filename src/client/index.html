@@ -21,7 +21,7 @@
   <body ng-app="app" layout="column">
     <div ng-include="'app/layout/topnav.html'"></div>
       <md-sidenav md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" tabindex="-1">
-          johnny
+        johnny
       </md-sidenav>
       <md-content ui-view>
         Main section
@@ -44,7 +44,10 @@
     <script src="/src/client/app/app.module.js"></script>
     <script src="/src/client/app/core/core.module.js"></script>
     <script src="/src/client/app/layout/layout.module.js"></script>
+    <script src="/src/client/app/users/users.module.js"></script>
     <script src="/src/client/app/core/core.route.js"></script>
+    <script src="/src/client/app/layout/topnav.controller.js"></script>
+    <script src="/src/client/app/users/user.summary.directive.js"></script>
     <!-- endinject -->
 
     <!-- inject:templates:js -->
