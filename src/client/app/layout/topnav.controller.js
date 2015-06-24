@@ -4,17 +4,19 @@
   angular.module('app.layout')
     .controller('TopnavController', TopnavController);
 
-  TopnavController.$inject = ['$mdDialog'];
+  TopnavController.$inject = ['$mdDialog', 'userCurrentService'];
 
   /* @ngInject */
-  function TopnavController($mdDialog) {
+  function TopnavController($mdDialog, userCurrentService) {
     var vm = this;
 
-    vm.user = {
-      'ID'          : 1,
-      'Name'        : 'Rolan Hunt',
-      'Thumbnail'   : 'https://randomuser.me/api/portraits/med/men/23.jpg'
-    }
+    vm.user = {};
+
+    userCurrentService.getUser(1).then(
+      function(result) {
+        vm.user = result;
+      }
+    )
 
     vm.showDialog = showDialog;
 

@@ -5,9 +5,9 @@
     </md-button>
     <h1>Stack.io</h1>
     <span flex></span>
-    <div class="label">{{vm.user.Name}}</div>
-    <md-button class="md-fab md-primary" aria-label="{{vm.user.Name}}" ng-click="vm.showDialog()">
-      <img src="https://randomuser.me/api/portraits/med/men/23.jpg" class="face" />
+    <div class="label">{{::vm.user.name.first}} {{::vm.user.name.last}}</div>
+    <md-button class="md-fab md-primary" aria-label="{{::vm.user.name.first}} {{::vm.user.name.last}}" ng-click="vm.showDialog()">
+      <img ng-src="{{vm.user.picture.medium}}" class="face" />
     </md-button>
   </div>
 </md-toolbar>
