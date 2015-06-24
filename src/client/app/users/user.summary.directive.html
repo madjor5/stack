@@ -1,17 +1,30 @@
-<md-toolbar class="md-accent header">
+<md-toolbar class="md-accent">
   <div class="md-toolbar-tools">
+    <h1 class="md-headline">User Summary</h1>
     <span flex=""></span>
     <md-button ng-click="toggleSidenav('left')" class="md-icon-button">
       <md-icon md-font-library="material-icons" ng-click="vm.close()">close</md-icon>
     </md-button>
   </div>
-  <div layout="row">
-    <img ng-src="{{vm.user.picture.medium}}" class="face large center" />
-  </div>
-  <div layout="row" layout-align="center center">
-    <h1 class="md-headline">{{::vm.user.name.first}} {{::vm.user.name.last}}</h1>
-  </div>
 </md-toolbar>
 <md-dialog-content>
-  johnny
+  <div layout layout-padding>
+    <div flex>
+      <md-input-container>
+        <label>First name:</label>
+        <input ng-model="vm.user.name.first">
+      </md-input-container>
+      <md-input-container>
+        <label>Last name:</label>
+        <input ng-model="vm.user.name.last">
+      </md-input-container>
+      <md-input-container>
+        <label>Street Address</label>
+        <input ng-model="vm.user.location.street">
+      </md-input-container>
+    </div>
+    <div flex>
+      [TODO: user rights settings - teams etc.]
+    </div>
+  </div>
 </md-dialog-content>
