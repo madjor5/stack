@@ -2,15 +2,35 @@
   <div class="md-toolbar-tools">
     <h1 class="md-headline">User Summary</h1>
     <span flex=""></span>
-    <md-button ng-click="toggleSidenav('left')" class="md-icon-button">
-      <md-icon md-font-library="material-icons" ng-click="vm.close()">close</md-icon>
+    <md-button class="md-icon-button">
+      <md-tooltip>
+        Edit
+      </md-tooltip>
+      <md-icon md-font-library="material-icons">edit</md-icon>
+    </md-button>
+    <md-button ng-click="vm.close()" class="md-icon-button">
+      <md-tooltip>
+        Close
+      </md-tooltip>
+      <md-icon md-font-library="material-icons">close</md-icon>
     </md-button>
   </div>
 </md-toolbar>
 <md-dialog-content>
-  <div layout layout-padding>
-    <div flex>
-      <md-input-container>
+  <div layout>
+    <div flex class="md-body-1">
+      <p class="md-body-2">{{::vm.user.name.first}} {{::vm.user.name.last}}</p>
+      <p>
+        {{::vm.user.location.street}}<br />
+        {{::vm.user.location.zip}} {{::vm.user.location.city}}<br />
+        {{::vm.user.location.country}}
+      </p>
+      <p>
+        <label>E-mail:</label> <a ng-href="mailto: {{::vm.user.email}}">{{::vm.user.email}}</a><br />
+        <label>Phone:</label> <a ng-href="tel: {{::vm.user.phone}}">{{::vm.user.phone}}</a><br />
+        <label>Cell:</label> <a ng-href="tel: {{::vm.user.cell}}">{{::vm.user.cell}}</a>
+      </p>
+      <!-- <md-input-container>
         <label>First name:</label>
         <input ng-model="vm.user.name.first">
       </md-input-container>
@@ -21,7 +41,7 @@
       <md-input-container>
         <label>Street Address</label>
         <input ng-model="vm.user.location.street">
-      </md-input-container>
+      </md-input-container> -->
     </div>
     <div flex>
       [TODO: user rights settings - teams etc.]
