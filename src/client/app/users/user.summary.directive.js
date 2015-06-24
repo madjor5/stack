@@ -14,12 +14,16 @@
         templateUrl: 'app/users/user.summary.directive.html'
     };
 
-    ioUserSummaryController.$inject = ['$log'];
-
-    function ioUserSummaryController($log) {
-      $log.info('ioUserSummaryController', this);
-    }
-
     return directive;
+  }
+
+  ioUserSummaryController.$inject = ['$log', '$mdDialog'];
+
+  function ioUserSummaryController($log, $mdDialog) {
+    var vm = this;
+
+    this.close = function() {
+      $mdDialog.hide();
+    }
   }
 }());

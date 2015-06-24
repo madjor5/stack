@@ -1,4 +1,10 @@
 <md-toolbar class="md-accent header">
+  <div class="md-toolbar-tools">
+    <span flex=""></span>
+    <md-button ng-click="toggleSidenav('left')" class="md-icon-button">
+      <md-icon md-font-library="material-icons" ng-click="vm.close()">close</md-icon>
+    </md-button>
+  </div>
   <div layout="row">
     <img src="https://randomuser.me/api/portraits/med/men/23.jpg" class="face large center" />
   </div>
