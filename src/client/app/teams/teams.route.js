@@ -8,7 +8,7 @@
     $stateProvider
       .state('teams', {
         url: '/teams',
-        templateUrl: 'app/home/home.html'
+        templateUrl: 'app/teams/teams.html'
       });
   }
 }());
