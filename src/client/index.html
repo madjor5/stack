@@ -21,9 +21,7 @@
   <body ng-app="app" layout="column">
     <div ng-include="'app/layout/topnav.html'"></div>
     <section layout="row" flex>
-      <md-sidenav md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" tabindex="-1">
-        johnny
-      </md-sidenav>
+      <md-sidenav ng-include="'app/layout/sidenav.html'" class="md-sidenav-left md-whiteframe-z2 md-accent" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" tabindex="-1"></md-sidenav>
       <md-content ui-view>
         Main section
       </md-content>
