@@ -11,10 +11,6 @@
         .state('home', {
           url: '/home',
           templateUrl: 'app/home/home.html'
-        })
-        .state('teams', {
-          url: '/teams',
-          templateUrl: 'app/home/home.html'
         });
     }
 }());
