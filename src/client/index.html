@@ -21,7 +21,7 @@
   <body ng-app="app" layout="column">
     <div ng-include="'app/layout/topnav.html'"></div>
     <section layout="row" flex>
-      <md-sidenav ng-include="'app/layout/sidenav.html'" class="md-sidenav-left md-whiteframe-z2 md-accent" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" tabindex="-1"></md-sidenav>
+      <md-sidenav ng-include="'app/layout/sidenav.html'" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" tabindex="-1"></md-sidenav>
       <md-content ui-view flex>
         Main section
       </md-content>
@@ -47,7 +47,10 @@
     <script src="/src/client/app/users/users.module.js"></script>
     <script src="/src/client/app/core/core.route.js"></script>
     <script src="/src/client/app/layout/layout.theme.js"></script>
+    <script src="/src/client/app/layout/sidenav.controller.js"></script>
+    <script src="/src/client/app/layout/sidenav.service.js"></script>
     <script src="/src/client/app/layout/topnav.controller.js"></script>
+    <script src="/src/client/app/teams/teams.config.js"></script>
     <script src="/src/client/app/teams/teams.controller.js"></script>
     <script src="/src/client/app/teams/teams.list.directive.js"></script>
     <script src="/src/client/app/teams/teams.route.js"></script>

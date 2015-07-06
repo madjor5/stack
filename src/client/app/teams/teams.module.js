@@ -3,6 +3,7 @@
 
   angular.module('app.teams', [
     'app.core',
-    'app.users'
+    'app.users',
+    'app.layout'
   ]);
 }());

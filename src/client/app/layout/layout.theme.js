@@ -6,11 +6,11 @@
 
   function config($mdThemingProvider) {
     $mdThemingProvider.theme('ioTheme')
-      .primaryPalette('blue-grey', {
+      .primaryPalette('grey', {
         'hue-1': '700',
         'hue-2': '100'
       })
-      .accentPalette('blue');
+      .accentPalette('pink');
 
     $mdThemingProvider.setDefaultTheme('ioTheme');
   }
