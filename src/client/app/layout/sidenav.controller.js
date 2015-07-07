@@ -4,11 +4,11 @@
   angular.module('app.layout')
     .controller('SidenavController', SidenavController);
 
-  SidenavController.$inject = ['$log', 'SidenavService'];
+  SidenavController.$inject = ['$log', 'Sidenav'];
 
-  function SidenavController($log, SidenavService) {
+  function SidenavController($log, Sidenav) {
     var vm = this;
-    
-    $log.info(SidenavService.addItem('test', 'test'));
+
+    this.sidenav = Sidenav;
   }
 }());

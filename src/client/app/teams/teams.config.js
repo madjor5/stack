@@ -2,9 +2,9 @@
   'use strict';
 
   angular.module('app.teams')
-    .config(config);
+    .config(['SidenavProvider', config]);
 
-  function config() {
-    console.log('config');
+  function config(SidenavProvider) {
+    SidenavProvider.addItem('Teams', 'teams');
   }
 }());

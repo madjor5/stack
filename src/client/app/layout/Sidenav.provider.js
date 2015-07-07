@@ -1,22 +1,23 @@
-(function() {
+(function(){
   'use strict';
 
   angular.module('app.layout')
-    .factory('SidenavService', SidenavService);
+    .provider('Sidenav', SidenavProvider);
 
-  SidenavService.$inject = ['$log'];
-
-  function SidenavService($log) {
-    var service = {
-      addItem: addItem
-    };
-
+  function SidenavProvider() {
     var leftItems = [];
 
-    return service;
+    var provider = {
+      addItem: addItem,
+      $get: function() {
+        return leftItems;
+      }
+    };
+
+    return provider;
 
     function addItem(name, href, sort) {
-      alert('adding');
+      console.log('adding new item to leftItems', name);
       var obj = {
         name: name,
         href: href
@@ -30,6 +31,7 @@
 
       return leftItems;
     }
-
   }
+
+
 }());

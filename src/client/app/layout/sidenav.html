@@ -1,6 +1,11 @@
 <md-content flex ng-controller="SidenavController as vm">
   <md-list>
-    <md-list-item>
+    <md-list-item ng-repeat="item in vm.sidenav track by sort">
+      <md-button ui-sref="{{::item.href}}">{{::item.name}}</md-button>
+    </md-list-item>
+
+
+    <!-- <md-list-item>
       <md-button ui-sref="teams" class="md-primary md-hue-2" style="display: block; width: 100%; text-align: left;">Primary Hue 1</md-button>
     </md-list-item>
     <md-list-item>
@@ -11,6 +16,6 @@
     </md-list-item>
     <md-list-item>
       <a ui-sref="reports">Reports</a>
-    </md-list-item>
+    </md-list-item> -->
   </md-list>
 </md-content>
