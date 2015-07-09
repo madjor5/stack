@@ -17,7 +17,6 @@
     return provider;
 
     function addItem(name, href, sort) {
-      console.log('adding new item to leftItems', name);
       var obj = {
         name: name,
         href: href
