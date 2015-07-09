@@ -1,5 +1,13 @@
 .md-sidenav-left {
   md-content {
     background-color: $primary-color;
+    .md-button {
+      display: block;
+      width: 100%;
+      text-align: left;
+    }
+    .active {
+      font-weight: bold;
+    }
   }
 }

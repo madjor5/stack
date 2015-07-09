@@ -1,7 +1,7 @@
 <md-content flex ng-controller="SidenavController as vm">
   <md-list>
     <md-list-item ng-repeat="item in vm.sidenav track by sort">
-      <md-button ui-sref="{{::item.href}}" ui-sref-active="md-accent">{{::item.name}}</md-button>
+      <md-button ui-sref="{{::item.href}}" ui-sref-active="active">{{::item.name}}</md-button>
     </md-list-item>
   </md-list>
 </md-content>
