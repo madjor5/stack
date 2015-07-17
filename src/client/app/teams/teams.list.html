@@ -6,11 +6,8 @@
       </div>
     </md-toolbar>
     <md-list>
-      <md-list-item>
-        <md-button ui-sref="teams.details">Team 1d</md-button>
-      </md-list-item>
-      <md-list-item>
-        Team 2
+      <md-list-item ng-repeat="team in vm.teams">
+        <md-button ui-sref="teams.details({ id: team.id })">{{team.name}}</md-button>
       </md-list-item>
     </md-list>
   </div>

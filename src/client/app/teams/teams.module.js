@@ -4,6 +4,7 @@
   angular.module('app.teams', [
     'app.core',
     'app.users',
-    'app.layout'
+    'app.layout',
+    'ngResource'
   ]);
 }());

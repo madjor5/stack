@@ -13,10 +13,12 @@
       })
       .state('teams.list', {
         url: '/list',
-        templateUrl: 'app/teams/teams.list.html'
+        templateUrl: 'app/teams/teams.list.html',
+        controller: 'TeamsListController',
+        controllerAs: 'vm'
       })
       .state('teams.details', {
-        url: '/details',
+        url: '/details/:id',
         templateUrl: 'app/teams/teams.details.html',
         onEnter: function() {
           console.log('test');
