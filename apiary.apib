@@ -23,6 +23,37 @@ to keep your client decoupled from implementation details.
             "teams_url": "/teams"
         }
 
+## Group Teams
+
+Resources related to the teams and members in the api
+
+## Teams Collection [/teams{?page}]
+
++ Parameters
+    + page: 1 (optional, number) - The page of teams to return
+
+### List All Teams [GET]
+
++ Response 200 (application/json)
+
+    + Headers
+
+            Link: </questions?page=2>; rel="next"
+
+    + Body
+        
+            [
+                {
+                    "id": 1,
+                    "name": "Team 1"
+                },
+                {
+                    "id": 2,
+                    "name": "Team 2"
+                }
+            ]
+    
+
 ## Group Question
 
 Resources related to questions in the API.
