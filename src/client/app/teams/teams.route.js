@@ -13,7 +13,7 @@
       })
       .state('teams.list', {
         url: '/list',
-        templateUrl: 'app/teams/teams.html'
+        templateUrl: 'app/teams/teams.list.html'
       })
       .state('teams.details', {
         url: '/details',
