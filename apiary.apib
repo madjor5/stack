@@ -52,7 +52,34 @@ Resources related to the teams and members in the api
                     "name": "Team 2"
                 }
             ]
+
+## Team Details [/teams/{id}]
+
+The team object has following attributes
++ id
++ name
++ teamlead (reference to person)
++ teammembers (array of persons)
++ active_projects (array of projects)
     
++ Parameters
+    + id: 1 (required, number) - ID of the team
+
+### View Team Details [GET]
+
++ Response 200 (application/json)
+
+        {
+            "id": 1,
+            "name": "team 1",
+            "teamlead": 12,
+            "teammembers": [
+                19,
+                20,
+                21
+            ],
+            "active_projects": []
+        }
 
 ## Group Question
 
