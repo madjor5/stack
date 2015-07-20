@@ -4,9 +4,9 @@
   angular.module('app.teams')
     .controller('TeamsListController', TeamsListController);
 
-  TeamsListController.$inject = ['$log', '$state', '$mdDialog', 'teamsService'];
+  TeamsListController.$inject = ['$log', '$state', 'teamsService'];
 
-  function TeamsListController($log, $state, $mdDialog, teamsService) {
+  function TeamsListController($log, $state, teamsService) {
     var vm = this;
     $log.info('TeamsListController', vm, teamsService.getTeams());
 
