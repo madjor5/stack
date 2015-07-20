@@ -1,7 +1,10 @@
 (function() {
   'use strict';
 
-  var baseURL = 'http://private-de03c4-stack1.apiary-mock.com/';
+  // Api is at https://app.apiary.io/stack1/editor
+
+  //var baseURL = 'http://private-de03c4-stack1.apiary-mock.com/';
+  var baseURL = 'http://stack.api/api/team'
 
   angular.module('app.teams')
     .factory('teamsService', teamsService);
@@ -10,17 +13,14 @@
 
     /* @ngInject */
     function teamsService($resource, $log) {
-      var Teams = $resource(baseURL + 'teams', {
-        page: 1
-      });
-
       var service = {
         getTeams: getTeams
       };
 
       return service;
 
-      function getTeams() {
+      function getTeams(page) {
+        var Teams = $resource(baseURL);
         return Teams.query();
       }
     }

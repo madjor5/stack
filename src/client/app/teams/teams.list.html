@@ -6,8 +6,11 @@
       </div>
     </md-toolbar>
     <md-list>
-      <md-list-item ng-repeat="team in vm.teams">
-        <md-button ui-sref="teams.details({ id: team.id })">{{team.name}}</md-button>
+      <md-list-item class="md-2-line" ng-repeat="team in vm.teams" ng-click="vm.goToTeam(team, $event)">
+        <div class="md-list-item-text">
+          <h3>{{::team.Name}}</h3>
+          <p>Teamlead: {{::team.Teamlead.Name}}</p>
+        </div>
       </md-list-item>
     </md-list>
   </div>

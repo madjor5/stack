@@ -18,10 +18,10 @@
         controllerAs: 'vm'
       })
       .state('teams.details', {
-        url: '/details/:id',
+        url: '/details/:Id',
         templateUrl: 'app/teams/teams.details.html',
         onEnter: function() {
-          console.log('test');
+          console.log('test', this);
         }
       });
   }
