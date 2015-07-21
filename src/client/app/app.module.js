@@ -1,11 +1,11 @@
 (function () {
-    'use strict';
+  'use strict';
 
-    angular.module('app', [
-      'app.core',
-      'app.layout',
-      'app.users',
-      'app.teams'
-    ]);
+  angular.module('app', [
+    'app.core',
+    'app.layout',
+    'app.users',
+    'app.teams'
+  ]);
 
 })();

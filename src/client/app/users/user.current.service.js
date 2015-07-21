@@ -1,4 +1,4 @@
-(function(){
+(function() {
   'use strict';
 
   angular.module('app.users')
@@ -10,18 +10,19 @@
     // Array of fetched users
     var users = [];
 
+    /* jshint validthis: true */
+    var _this = this;
+
     var service = {
       getUser: getUser,
       users: users
-    }
+    };
 
     return service;
 
     function getUser(id) {
-      $log.info(this);
       var q = $q.defer();
-      var _this = this;
-      if (this.users[id]) {
+      if (_this.users[id]) {
         q.resolve(users[id]);
       } else {
         $http.get('http://api.randomuser.me/?seed=e285619a403c515')
@@ -34,7 +35,7 @@
               $log.error(error);
               q.reject(error);
             }
-          )
+          );
       }
 
       return q.promise;

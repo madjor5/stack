@@ -13,8 +13,7 @@
     vm.teams = teamsService.getTeams(1);
 
     vm.goToTeam = function(team, event) {
-      $log.info("goto", team, event);
       $state.go('teams.details', {Id: team.Id});
-    }
+    };
   }
 }());

@@ -7,11 +7,11 @@
   /* @ngInject */
   function ioUserSummary() {
     var directive = {
-        bindToController: true,
-        controller: ioUserSummaryController,
-        controllerAs: 'vm',
-        restrict: 'EA',
-        templateUrl: 'app/users/user.summary.directive.html'
+      bindToController: true,
+      controller: ioUserSummaryController,
+      controllerAs: 'vm',
+      restrict: 'EA',
+      templateUrl: 'app/users/user.summary.directive.html'
     };
 
     return directive;
@@ -20,17 +20,18 @@
   ioUserSummaryController.$inject = ['$log', '$mdDialog', 'userCurrentService'];
 
   function ioUserSummaryController($log, $mdDialog, userCurrentService) {
+    /* jshint validthis: true */
     var vm = this;
 
     // Mocked user information
     vm.user = {};
     userCurrentService.getUser(1)
-        .then(function(result) {
-          vm.user = result;
-        });
+      .then(function(result) {
+        vm.user = result;
+      });
 
-    this.close = function() {
+    vm.close = function() {
       $mdDialog.hide();
-    }
+    };
   }
 }());
