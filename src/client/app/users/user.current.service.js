@@ -10,9 +10,6 @@
     // Array of fetched users
     var users = [];
 
-    /* jshint validthis: true */
-    var _this = this;
-
     var service = {
       getUser: getUser,
       users: users
@@ -22,6 +19,9 @@
 
     function getUser(id) {
       var q = $q.defer();
+
+      /* jshint validthis: true */
+      var _this = this;
       if (_this.users[id]) {
         q.resolve(users[id]);
       } else {
