@@ -37,12 +37,12 @@ gulp.task('vet', function() {
   log('Analyzing source with JSHint and JSCS');
 
   return gulp
-    .src(config.alljs)
-    .pipe($.if(args.verbose, $.print()))
-    .pipe($.jshint())
-    .pipe($.jshint.reporter('jshint-stylish', {verbose: true}))
-    .pipe($.jshint.reporter('fail'))
-    .pipe($.jscs());
+        .src(config.alljs)
+        .pipe($.if(args.verbose, $.print()))
+        .pipe($.jshint())
+        .pipe($.jshint.reporter('jshint-stylish', {verbose: true}))
+        .pipe($.jshint.reporter('fail'))
+        .pipe($.jscs());
 });
 
 /**
@@ -56,34 +56,19 @@ gulp.task('plato', function(done) {
 });
 
 /**
- * Compile SCSS to css
- * @return {Stream}
- */
-
-gulp.task('styles', ['clean-styles'], function() {
-  log('Compiling SCSS --> CSS');
-
-  return gulp
-    .src(config.scss)
-    .pipe($.sass().on('error', $.sass.logError))
-    .pipe($.autoprefixer({browser: ['last 2 version', '> 5%']}))
-    .pipe(gulp.dest(config.temp));
-});
-
-/**
  * Compile less to css
  * @return {Stream}
  */
-gulp.task('styles-less', ['clean-styles'], function() {
+gulp.task('styles', ['clean-styles'], function() {
   log('Compiling Less --> CSS');
 
   return gulp
-    .src(config.less)
-    .pipe($.plumber()) // exit gracefully if something fails after this
-    .pipe($.less())
-    //        .on('error', errorLogger) // more verbose and dupe output. requires emit.
-    .pipe($.autoprefixer({browsers: ['last 2 version', '> 5%']}))
-    .pipe(gulp.dest(config.temp));
+      .src(config.less)
+      .pipe($.plumber()) // exit gracefully if something fails after this
+      .pipe($.less())
+//        .on('error', errorLogger) // more verbose and dupe output. requires emit.
+      .pipe($.autoprefixer({browsers: ['last 2 version', '> 5%']}))
+      .pipe(gulp.dest(config.temp));
 });
 
 /**
@@ -94,29 +79,21 @@ gulp.task('fonts', ['clean-fonts'], function() {
   log('Copying fonts');
 
   return gulp
-    .src(config.fonts)
-    .pipe(gulp.dest(config.build + 'fonts'));
+      .src(config.fonts)
+      .pipe(gulp.dest(config.build + 'fonts'));
 });
 
 /**
  * Compress images
  * @return {Stream}
  */
-gulp.task('images', ['bower-icons', 'clean-images'], function() {
+gulp.task('images', ['clean-images'], function() {
   log('Compressing and copying images');
 
   return gulp
-    .src(config.images)
-    .pipe($.imagemin({optimizationLevel: 4}))
-    .pipe(gulp.dest(config.build + 'images'));
-});
-
-gulp.task('bower-icons', ['clean-images'], function() {
-  log('Moving icons - TODO');
-
-  return gulp
-    .src(config.icons)
-    .pipe(gulp.dest(config.build + '/angular-material-icons'));
+      .src(config.images)
+      .pipe($.imagemin({optimizationLevel: 4}))
+      .pipe(gulp.dest(config.build + 'images'));
 });
 
 gulp.task('less-watcher', function() {
@@ -131,15 +108,15 @@ gulp.task('templatecache', ['clean-code'], function() {
   log('Creating an AngularJS $templateCache');
 
   return gulp
-    .src(config.htmltemplates)
-    .pipe($.if(args.verbose, $.bytediff.start()))
-    .pipe($.minifyHtml({empty: true}))
-    .pipe($.if(args.verbose, $.bytediff.stop(bytediffFormatter)))
-    .pipe($.angularTemplatecache(
-      config.templateCache.file,
-      config.templateCache.options
-    ))
-    .pipe(gulp.dest(config.temp));
+      .src(config.htmltemplates)
+      .pipe($.if(args.verbose, $.bytediff.start()))
+      .pipe($.minifyHtml({empty: true}))
+      .pipe($.if(args.verbose, $.bytediff.stop(bytediffFormatter)))
+      .pipe($.angularTemplatecache(
+          config.templateCache.file,
+          config.templateCache.options
+      ))
+      .pipe(gulp.dest(config.temp));
 });
 
 /**
@@ -156,19 +133,19 @@ gulp.task('wiredep', function() {
   var js = args.stubs ? [].concat(config.js, config.stubsjs) : config.js;
 
   return gulp
-    .src(config.index)
-    .pipe(wiredep(options))
-    .pipe(inject(js, '', config.jsOrder))
-    .pipe(gulp.dest(config.client));
+      .src(config.index)
+      .pipe(wiredep(options))
+      .pipe(inject(js, '', config.jsOrder))
+      .pipe(gulp.dest(config.client));
 });
 
 gulp.task('inject', ['wiredep', 'styles', 'templatecache'], function() {
   log('Wire up css into the html, after files are ready');
 
   return gulp
-    .src(config.index)
-    .pipe(inject(config.css))
-    .pipe(gulp.dest(config.client));
+      .src(config.index)
+      .pipe(inject(config.css))
+        .pipe(gulp.dest(config.client));
 });
 
 /**
@@ -199,14 +176,14 @@ gulp.task('build-specs', ['templatecache'], function(done) {
   options.devDependencies = true;
 
   return gulp
-    .src(config.specRunner)
-    .pipe(wiredep(options))
-    .pipe(inject(config.js, '', config.jsOrder))
-    .pipe(inject(config.testlibraries, 'testlibraries'))
-    .pipe(inject(config.specHelpers, 'spechelpers'))
-    .pipe(inject(specs, 'specs', ['**/*']))
-    .pipe(inject(templateCache, 'templates'))
-    .pipe(gulp.dest(config.client));
+      .src(config.specRunner)
+      .pipe(wiredep(options))
+      .pipe(inject(config.js, '', config.jsOrder))
+      .pipe(inject(config.testlibraries, 'testlibraries'))
+      .pipe(inject(config.specHelpers, 'spechelpers'))
+      .pipe(inject(specs, 'specs', ['**/*']))
+      .pipe(inject(templateCache, 'templates'))
+      .pipe(gulp.dest(config.client));
 });
 
 /**
@@ -244,32 +221,32 @@ gulp.task('optimize', ['inject', 'test'], function() {
   var templateCache = config.temp + config.templateCache.file;
 
   return gulp
-    .src(config.index)
-    .pipe($.plumber())
-    .pipe(inject(templateCache, 'templates'))
-    .pipe(assets) // Gather all assets from the html with useref
-    // Get the css
-    .pipe(cssFilter)
-    .pipe($.minifyCss())
-    .pipe(cssFilter.restore())
-    // Get the custom javascript
-    .pipe(jsAppFilter)
-    .pipe($.ngAnnotate({add: true}))
-    .pipe($.uglify())
-    .pipe(getHeader())
-    .pipe(jsAppFilter.restore())
-    // Get the vendor javascript
-    .pipe(jslibFilter)
-    .pipe($.uglify()) // another option is to override wiredep to use min files
-    .pipe(jslibFilter.restore())
-    // Take inventory of the file names for future rev numbers
-    .pipe($.rev())
-    // Apply the concat and file replacement with useref
-    .pipe(assets.restore())
-    .pipe($.useref())
-    // Replace the file names in the html with rev numbers
-    .pipe($.revReplace())
-    .pipe(gulp.dest(config.build));
+      .src(config.index)
+      .pipe($.plumber())
+      .pipe(inject(templateCache, 'templates'))
+      .pipe(assets) // Gather all assets from the html with useref
+      // Get the css
+      .pipe(cssFilter)
+      .pipe($.minifyCss())
+      .pipe(cssFilter.restore())
+      // Get the custom javascript
+      .pipe(jsAppFilter)
+      .pipe($.ngAnnotate({add: true}))
+      .pipe($.uglify())
+      .pipe(getHeader())
+      .pipe(jsAppFilter.restore())
+      // Get the vendor javascript
+      .pipe(jslibFilter)
+      .pipe($.uglify()) // another option is to override wiredep to use min files
+      .pipe(jslibFilter.restore())
+      // Take inventory of the file names for future rev numbers
+      .pipe($.rev())
+      // Apply the concat and file replacement with useref
+      .pipe(assets.restore())
+      .pipe($.useref())
+      // Replace the file names in the html with rev numbers
+      .pipe($.revReplace())
+      .pipe(gulp.dest(config.build));
 });
 
 /**
@@ -304,8 +281,8 @@ gulp.task('clean-images', function(done) {
  */
 gulp.task('clean-styles', function(done) {
   var files = [].concat(
-    config.temp + '**/*.css',
-    config.build + 'styles/**/*.css'
+      config.temp + '**/*.css',
+      config.build + 'styles/**/*.css'
   );
   clean(files, done);
 });
@@ -316,9 +293,9 @@ gulp.task('clean-styles', function(done) {
  */
 gulp.task('clean-code', function(done) {
   var files = [].concat(
-    config.temp + '**/*.js',
-    config.build + 'js/**/*.js',
-    config.build + '**/*.html'
+      config.temp + '**/*.js',
+      config.build + 'js/**/*.js',
+      config.build + '**/*.html'
   );
   clean(files, done);
 });
@@ -330,7 +307,7 @@ gulp.task('clean-code', function(done) {
  * @return {Stream}
  */
 gulp.task('test', ['vet', 'templatecache'], function(done) {
-  startTests(true /*singleRun*/ , done);
+  startTests(true /*singleRun*/ , function() { done(); });
 });
 
 /**
@@ -340,7 +317,7 @@ gulp.task('test', ['vet', 'templatecache'], function(done) {
  *    gulp autotest --startServers
  */
 gulp.task('autotest', function(done) {
-  startTests(false /*singleRun*/ , done);
+  startTests(false /*singleRun*/ , function() { done(); });
 });
 
 /**
@@ -384,11 +361,16 @@ gulp.task('bump', function() {
   log(msg);
 
   return gulp
-    .src(config.packages)
-    .pipe($.print())
-    .pipe($.bump(options))
-    .pipe(gulp.dest(config.root));
+      .src(config.packages)
+      .pipe($.print())
+      .pipe($.bump(options))
+      .pipe(gulp.dest(config.root));
 });
+
+/**
+ * Optimize the code and re-load browserSync
+ */
+gulp.task('browserSyncReload', ['optimize'], browserSync.reload);
 
 ////////////////
 
@@ -436,8 +418,8 @@ function inject(src, label, order) {
 function orderSrc (src, order) {
   //order = order || ['**/*'];
   return gulp
-    .src(src)
-    .pipe($.if(order, $.order(order)));
+      .src(src)
+      .pipe($.if(order, $.order(order)));
 }
 
 /**
@@ -458,24 +440,24 @@ function serve(isDev, specRunner) {
   }
 
   return $.nodemon(nodeOptions)
-    .on('restart', ['vet'], function(ev) {
-      log('*** nodemon restarted');
-      log('files changed:\n' + ev);
-      setTimeout(function() {
-        browserSync.notify('reloading now ...');
-        browserSync.reload({stream: false});
-      }, config.browserReloadDelay);
-    })
-    .on('start', function () {
-      log('*** nodemon started');
-      startBrowserSync(isDev, specRunner);
-    })
-    .on('crash', function () {
-      log('*** nodemon crashed: script crashed for some reason');
-    })
-    .on('exit', function () {
-      log('*** nodemon exited cleanly');
-    });
+      .on('restart', ['vet'], function(ev) {
+        log('*** nodemon restarted');
+        log('files changed:\n' + ev);
+        setTimeout(function() {
+          browserSync.notify('reloading now ...');
+          browserSync.reload({stream: false});
+        }, config.browserReloadDelay);
+      })
+      .on('start', function () {
+        log('*** nodemon started');
+        startBrowserSync(isDev, specRunner);
+      })
+      .on('crash', function () {
+        log('*** nodemon crashed: script crashed for some reason');
+      })
+      .on('exit', function () {
+        log('*** nodemon exited cleanly');
+      });
 }
 
 function getNodeOptions(isDev) {
@@ -511,11 +493,11 @@ function startBrowserSync(isDev, specRunner) {
   // If build: watches the files, builds, and restarts browser-sync.
   // If dev: watches less, compiles it to css, browser-sync handles reload
   if (isDev) {
-    gulp.watch([config.scss], ['styles'])
-      .on('change', changeEvent);
+    gulp.watch([config.less], ['styles'])
+        .on('change', changeEvent);
   } else {
-    gulp.watch([config.scss, config.js, config.html], ['optimize', browserSync.reload])
-      .on('change', changeEvent);
+    gulp.watch([config.less, config.js, config.html], ['browserSyncReload'])
+        .on('change', changeEvent);
   }
 
   var options = {
@@ -534,8 +516,8 @@ function startBrowserSync(isDev, specRunner) {
     },
     injectChanges: true,
     logFileChanges: true,
-    logLevel: 'debug',
-    logPrefix: 'gulp-patterns',
+    logLevel: 'info',
+    logPrefix: 'hottowel',
     notify: true,
     reloadDelay: 0 //1000
   } ;
@@ -660,11 +642,11 @@ function formatPercent(num, precision) {
 function getHeader() {
   var pkg = require('./package.json');
   var template = ['/**',
-    ' * <%= pkg.name %> - <%= pkg.description %>',
-    ' * @authors <%= pkg.authors %>',
-    ' * @version v<%= pkg.version %>',
-    ' * @link <%= pkg.homepage %>',
-    ' * @license <%= pkg.license %>',
+    ' * <%%= pkg.name %> - <%%= pkg.description %>',
+    ' * @authors <%%= pkg.authors %>',
+    ' * @version v<%%= pkg.version %>',
+    ' * @link <%%= pkg.homepage %>',
+    ' * @license <%%= pkg.license %>',
     ' */',
     ''
   ].join('\n');

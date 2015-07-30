@@ -12,6 +12,10 @@
       })
       .accentPalette('pink');
 
+    $mdThemingProvider.theme('ioPurple')
+      .primaryPalette('purple')
+      .backgroundPalette('purple');
+
     $mdThemingProvider.setDefaultTheme('ioTheme');
   }
 }());

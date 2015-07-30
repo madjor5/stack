@@ -20,9 +20,8 @@
       .state('teams.details', {
         url: '/details/:Id',
         templateUrl: 'app/teams/teams.details.html',
-        onEnter: function() {
-          console.log('test', this);
-        }
+        controller: 'TeamsDetailsController',
+        controllerAs: 'vm'
       });
   }
 }());

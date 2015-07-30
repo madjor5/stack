@@ -1,1 +1,56 @@
-<p>john</p>
+<div layout layout-sm="column">
+  <div flex class="teamDetailBaseData" md-theme="ioPurple">
+    <md-toolbar class="md-primary">
+      <div class="md-toolbar-tools">
+        <h2>Base Data</h2>
+        <div flex></div>
+      </div>
+    </md-toolbar>
+    <md-content md-theme="ioPurple" layout-padding>
+      <md-input-container>
+        <label>Team name</label>
+        <input required ng-model="vm.team.Name" />
+      </md-input-container>
+      <md-input-container>
+        <label>Description</label>
+        <textarea></textarea>
+      </md-input-container>
+      <!-- <md-autocomplete
+        autocomplete="off"
+        md-search-text="vm.teamlead.searchTxt"
+        md-search-text-change="vm.teamLeadTextChange()"
+        md-items="item in vm.members | filter: vm.teamlead.searchTxt"
+        md-selected-item-change="vm.teamLeadItemChange(item)"
+        md-item-text="item.Name"
+        placeholder="Teamlead"
+        md-floating-label="Teamlead"
+        >
+        <md-item-template>
+          <span md-highlight-text="vm.teamlead.searchTxt">{{item.Name}}</span>
+        </md-item-template>
+      </md-autocomplete> -->
+      <md-input-container class="md-input-has-value">
+        <label style="margin-bottom: -27px">Teamlead</label>
+        <md-select placeholder="Teamlead" ng-model="vm.team.Teamlead">
+          <md-option value="0">None</md-option>
+          <md-option ng-repeat="member in vm.members" value="{{member.PersonID}}">{{member.Name}}</md-option>
+        </md-select>
+      </md-input-container>
+      <div class="md-actions" layout>
+        <div flex></div>
+        <md-button>Save</md-button>
+      </div>
+    </md-content>
+  </div>
+  <div flex>
+    <h1>Team members</h1>
+  </div>
+</div>
+<div layout layout-sm="column" layout-padding>
+  <div flex>
+    <h1>Projects</h1>
+  </div>
+  <div flex>
+    <h1>Customers</h1>
+  </div>
+</div>

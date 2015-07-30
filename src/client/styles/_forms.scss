@@ -1,0 +1,16 @@
+// hack for select
+/* .md-select-label {
+  width: 100%;
+} */
+
+md-select {
+    display: inline-block;
+    margin-top: 2px;
+    width: 100%;
+}
+
+md-input-container > md-select {
+  flex: 1;
+  order: 2;
+  margin: 0;
+}

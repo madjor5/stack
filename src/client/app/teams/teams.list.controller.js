@@ -8,12 +8,11 @@
 
   function TeamsListController($log, $state, teamsService) {
     var vm = this;
-    $log.info('TeamsListController', vm, teamsService.getTeams());
 
     vm.teams = teamsService.getTeams(1);
 
     vm.goToTeam = function(team, event) {
-      $state.go('teams.details', {Id: team.Id});
+      $state.go('teams.details', {Id: team.TeamID});
     };
   }
 }());
