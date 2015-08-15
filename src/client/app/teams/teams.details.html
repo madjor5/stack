@@ -13,32 +13,18 @@
       </md-input-container>
       <md-input-container>
         <label>Description</label>
-        <textarea></textarea>
+        <textarea ng-model="vm.team.Description"></textarea>
       </md-input-container>
-      <!-- <md-autocomplete
-        autocomplete="off"
-        md-search-text="vm.teamlead.searchTxt"
-        md-search-text-change="vm.teamLeadTextChange()"
-        md-items="item in vm.members | filter: vm.teamlead.searchTxt"
-        md-selected-item-change="vm.teamLeadItemChange(item)"
-        md-item-text="item.Name"
-        placeholder="Teamlead"
-        md-floating-label="Teamlead"
-        >
-        <md-item-template>
-          <span md-highlight-text="vm.teamlead.searchTxt">{{item.Name}}</span>
-        </md-item-template>
-      </md-autocomplete> -->
       <md-input-container class="md-input-has-value">
         <label style="margin-bottom: -27px">Teamlead</label>
-        <md-select placeholder="Teamlead" ng-model="vm.team.Teamlead">
+        <md-select placeholder="Teamlead" ng-model="vm.teamlead.selectedItem">
           <md-option value="0">None</md-option>
-          <md-option ng-repeat="member in vm.members" value="{{member.PersonID}}">{{member.Name}}</md-option>
+          <md-option ng-repeat="member in vm.members" value="{{member.MemberId}}">{{member.Firstname}} {{member.Lastname}}</md-option>
         </md-select>
       </md-input-container>
       <div class="md-actions" layout>
         <div flex></div>
-        <md-button>Save</md-button>
+        <md-button ng-click="vm.updateTeam()">Save</md-button>
       </div>
     </md-content>
   </div>

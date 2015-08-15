@@ -9,7 +9,7 @@
       <md-list-item class="md-2-line" ng-repeat="team in vm.teams" ng-click="vm.goToTeam(team, $event)">
         <div class="md-list-item-text">
           <h3>{{::team.Name}}</h3>
-          <p>Teamlead: {{::team.TeamleadName}}</p>
+          <p ng-show="vm.getTeamlead(team)">Teamlead: {{::vm.getTeamlead(team).Firstname}} {{::vm.getTeamlead(team).Lastname}}</p>
         </div>
       </md-list-item>
     </md-list>

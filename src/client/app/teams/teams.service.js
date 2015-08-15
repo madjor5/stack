@@ -17,24 +17,32 @@
     var service = {
       getTeams: getTeams,
       getTeam: getTeam,
-      getTeamMembers: getTeamMembers
+      getTeamMembers: getTeamMembers,
+      updateTeam: updateTeam
     };
 
     return service;
 
     function getTeams(page) {
-      var Teams = $resource(baseURL + '/list');
+      var Teams = $resource(baseURL);
       return Teams.query();
     }
 
     function getTeam(id) {
-      var Team = $resource(baseURL + '/getteam/' + id);
+      var Team = $resource(baseURL + '/' + id);
       return Team.get();
     }
 
     function getTeamMembers(id) {
-      var Members = $resource(baseURL + '/members/' + id);
+      var Members = $resource(baseURL + '/' + id + '/members');
       return Members.query();
+    }
+
+    function updateTeam(team) {
+      $log.info('test', team);
+      var T = $resource(baseURL + '/updateteam/');
+      T.query();
+      $log.debug('query', T);
     }
   }
 }());

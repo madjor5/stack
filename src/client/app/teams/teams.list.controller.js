@@ -12,7 +12,17 @@
     vm.teams = teamsService.getTeams(1);
 
     vm.goToTeam = function(team, event) {
-      $state.go('teams.details', {Id: team.TeamID});
+      $state.go('teams.details', {Id: team.TeamId});
+    };
+
+    vm.getTeamlead = function(team) {
+      var tl = false;
+      team.Members.forEach(function(member, count) {
+        if (member.Teamlead) {
+          tl = member;
+        }
+      });
+      return tl;
     };
   }
 }());

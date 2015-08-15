@@ -10,7 +10,11 @@ md-select {
 }
 
 md-input-container > md-select {
-  flex: 1;
-  order: 2;
-  margin: 0;
+    flex: 1;
+    order: 2;
+    margin: 0;
+    
+    .md-select-label {
+        width: 100%;
+    }
 }

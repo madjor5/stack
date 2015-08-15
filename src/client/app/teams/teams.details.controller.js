@@ -17,15 +17,13 @@
     };
 
     vm.members.$promise.then(function(data) {
-      $log.debug(data, vm.team);
-      if (vm.team.Teamlead) {
-        angular.forEach(vm.members, function(m) {
-          if (m.PersonID === vm.team.Teamlead) {
-            vm.teamlead.selectedItem = m;
-            vm.teamlead.searchTxt = m.Name;
-          }
-        });
-      }
+      angular.forEach(vm.members, function(m) {
+        if (m.Teamlead === true) {
+          vm.teamlead.selectedItem = m.MemberId;
+          vm.teamlead.searchTxt = m.Firstname + m.Lastname;
+          $log.debug("data", m, vm.teamlead);
+        }
+      });
     });
 
     vm.teamLeadTextChange = function() {
@@ -37,6 +35,10 @@
         vm.teamlead.selectedItem = itm;
         vm.team.Teamlead = itm.PersonID;
       }
+    };
+
+    vm.updateTeam = function() {
+      teamsService.updateTeam(vm.team);
     };
   }
 }());
