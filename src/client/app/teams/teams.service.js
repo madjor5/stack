@@ -21,6 +21,8 @@
       updateTeam: updateTeam
     };
 
+    var TeamArray = [];
+
     return service;
 
     function getTeams(page) {
@@ -30,6 +32,7 @@
 
     function getTeam(id) {
       var Team = $resource(baseURL + '/' + id);
+      TeamArray[id] = Team;
       return Team.get();
     }
 
@@ -39,10 +42,8 @@
     }
 
     function updateTeam(team) {
+      team.$update();
       $log.info('test', team);
-      var T = $resource(baseURL + '/updateteam/');
-      T.query();
-      $log.debug('query', T);
     }
   }
 }());

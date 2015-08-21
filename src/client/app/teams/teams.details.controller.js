@@ -4,12 +4,12 @@
   angular.module('app.teams')
     .controller('TeamsDetailsController', TeamsDetailsController);
 
-  TeamsDetailsController.$inject = ['$log', '$stateParams', 'teamsService'];
+  TeamsDetailsController.$inject = ['$log', '$stateParams', 'teamsFactory', 'teamsService'];
 
-  function TeamsDetailsController($log, $stateParams, teamsService) {
+  function TeamsDetailsController($log, $stateParams, teamsFactory, teamsService) {
     var vm = this;
-    vm.team = teamsService.getTeam($stateParams.Id);
-    vm.members = teamsService.getTeamMembers($stateParams.Id);
+    vm.team = teamsFactory.get({id: $stateParams.Id});
+    vm.members = teamsFactory.query({id: $stateParams.Id, action: 'members'});
 
     vm.teamlead = {
       searchTxt         : '',
@@ -21,7 +21,6 @@
         if (m.Teamlead === true) {
           vm.teamlead.selectedItem = m.MemberId;
           vm.teamlead.searchTxt = m.Firstname + m.Lastname;
-          $log.debug("data", m, vm.teamlead);
         }
       });
     });
@@ -38,7 +37,8 @@
     };
 
     vm.updateTeam = function() {
-      teamsService.updateTeam(vm.team);
+      $log.info(vm.team);
+      vm.team.$update();
     };
   }
 }());
